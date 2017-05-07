@@ -1,0 +1,22 @@
+{{extend 'layout.html'}}
+<h1 align=center style="font-size:3em; margin:8px">{{=recepies.title}}</h1>
+<div>
+<table >
+<!--    <div style="position:absolute; left:25px">-->
+    <tr>
+    {{if recepies.image:}}
+        <td style="padding: 1em"><img style="width:300px; height:200px;border:1; border-style:ridge;border-color:#883333" src="{{=URL('download', args=recepies.image)}}" /></td>
+    {{pass}}
+    {{if recepies.image1:}}
+        <td style="padding: 1em"><img style="width:300px; height:200px; border-style:" src="{{=URL('download', args=recepies.image1)}}" /></td>
+    {{pass}}
+    {{if recepies.image2:}}
+        <td style="padding: 1em"><img style="width:300px; height:200px; border-style:" src="{{=URL('download', args=recepies.image2)}}" /></td>
+    {{pass}}
+    {{if recepies.image3:}}
+        <td style="padding: 1em"><img style="width:300px; height:200px; border-style:" src="{{=URL('download', args=recepies.image3)}}" /></td>
+    {{pass}}
+</table>
+        <div style="padding: 1em; font-size:2em"><p>{{=recepies.description}}</p></div>
+<div style="padding:2em; color:#ffff33; font-size:2em; font-style:italic; font-family:Times; background-color:#ff8080; opacity:50%; border-radius:13px">{{=recepies.recepie}}</div>
+</div>

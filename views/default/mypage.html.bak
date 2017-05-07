@@ -1,0 +1,35 @@
+{{extend 'layout.html'}}
+{{block header}}
+    <header class="container-fluid background">
+      <div class="jumbotron text-center">
+        {{if response.title:}}
+        <h1>{{=response.title}}
+          <small>{{=response.subtitle or ''}}</small></h1>
+        {{pass}}
+      </div>
+    </header>
+{{end}}
+
+<table width="100%" style="border-collapse: collapse; border:1; border-style:solid">
+    <tr width="100%" style="border:1; border-style:solid">
+        <th width="15%" style="padding-bottom: 1em; font-size:2.5em">Title</th>
+        <th width="60%" style="padding-bottom: 1em; font-size:2.5em">Description</th>
+        <th  style="padding-bottom: 1em; font-size:2.5em">Image</th>
+        <td><button class="button" onclick="document.location='{{=URL("default","edit",args=recepies.id)}}'">Edit</button></td>
+    </tr>
+    <tr width="100%">
+        {{for recepies in rows:}}
+        <td width="15%" style="padding-bottom: 2em; font-size:3em">{{=A(recepies.title,_href=URL("show",args=recepies.id))}} </td>
+        <td width="60%" style="padding-bottom: 2em; font-size: 1.5em">{{=recepies.description}} </td>
+        <td style="padding-bottom: 2em; padding-right: 2em"> <img width="300px" height="200px" src="{{=URL('download', args=recepies.image)}}"></td>
+    </tr>
+    {{pass}}
+</table>
+
+{{if page:}}
+    <a href="{{=URL(args=[page-1])}}" margin="4px">previous</a>
+{{pass}}
+
+{{if len(rows)>items_per_page:}}
+    <a href="{{=URL(args=[page+1])}}" style="margin:10px">next</a>
+{{pass}}

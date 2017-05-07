@@ -1,0 +1,155 @@
+# -*- coding: utf-8 -*-
+# this file is released under public domain and you can use without limitations
+
+#########################################################################
+## This is a sample controller
+## - index is the default action of any application
+## - user is required for authentication and authorization
+## - download is for downloading files uploaded in the db (does streaming)
+#########################################################################
+@auth.requires_login()
+def index():
+    """
+    example action using the internationalization operator T and flash
+    rendered by views/default/index.html or views/generic.html
+
+    if you need a simple wiki simply replace the two lines below with:
+    return auth.wiki()
+    """
+    response.flash="Welcome to TheChef"
+    if len(request.args): page=int(request.args[0])
+    else: page=0
+    items_per_page=9
+    limitby=(page*items_per_page,(page+1)*items_per_page+1)
+    rows=db(db.profile).select(limitby=limitby)
+    return dict(rows=rows,page=page,items_per_page=items_per_page)
+
+
+def user():
+    """
+    exposes:
+    http://..../[app]/default/user/login
+    http://..../[app]/default/user/logout
+    http://..../[app]/default/user/register
+    http://..../[app]/default/user/profile
+    http://..../[app]/default/user/retrieve_password
+    http://..../[app]/default/user/change_password
+    http://..../[app]/default/user/bulk_register
+    use @auth.requires_login()
+        @auth.requires_membership('group name')
+        @auth.requires_permission('read','table name',record_id)
+    to decorate functions that need access control
+    also notice there is http://..../[app]/appadmin/manage/auth to allow administrator to manage users
+    """
+    return dict(form=auth())
+
+
+@cache.action()
+def download():
+    """
+    allows downloading of uploaded files
+    http://..../[app]/default/download/[filename]
+    """
+    return response.download(request, db)
+
+
+def call():
+    """
+    exposes services. for example:
+    http://..../[app]/default/call/jsonrpc
+    decorate with @services.jsonrpc the functions to expose
+    supports xml, json, xmlrpc, jsonrpc, amfrpc, rss, csv
+    """
+    return service()
+
+@auth.requires_login()
+def create():
+    response.flash="Submit Your Nightmarish recipee."
+    form=SQLFORM(db.recepies)
+    if form.process().accepted:
+        response.flash="Thank me for letting u submit."
+        redirect(URL('default','index'))
+    elif form.errors:
+        response.flash='Dude , check ur error list'
+    return dict(form=form)
+
+@auth.requires_login()
+def upload_profile():
+    response.flash="Upload your profile"
+    form=SQLFORM(db.profile)
+    if form.process().accepted:
+        response.flash="Your profile is uploaded"
+        redirect(URL('default','index'))
+    elif form.errors:
+        response.flash='Please check you filled all the field correctly'
+    return dict(form=form)
+
+def edit():
+    recepies=db.recepies(request.args(0)) or redirect(URL('error'))
+    form=SQLFORM(db.recepies,recepies, deletable=True)
+    if form.validate():
+        if form.deleted:
+            db(db.recepies.id==recepies.id).delete()
+            redirect(URL('default','index'))
+        else:
+            recepies.update_record(**dict(form.vars))
+            response.flash='Changes Accepted'
+            redirect(URL('default','index'))
+    return dict(form=form)
+
+def edit_profile():
+    prf=db.profile(request.args(0)) or redirect(URL('error'))
+    form=SQLFORM(db.profile,prf, deletable=True)
+    if form.validate():
+        if form.deleted:
+            db(db.profile.id==profile.id).delete()
+            redirect(URL('default','index'))
+        else:
+            prf.update_record(**dict(form.vars))
+            response.flash='Changes Accepted'
+            redirect(URL('default','index'))
+    return dict(form=form)
+
+
+def download():
+    return response.download(request, db)
+
+def show():
+    recepies=db.recepies(request.args(0)) or redirect(URL('error'))
+    return dict(recepies=recepies)
+
+def show_profile():
+    prf=db.profile(request.args(0)) or redirect(URL('error'))
+    return dict(profile=prf)
+
+
+def mypage():
+    if len(request.args): page=int(request.args[0])
+    else: page=0
+    items_per_page=1
+    limitby=(page*items_per_page,(page+1)*items_per_page+1)
+    rows=db(db.recepies.user_id==auth.user_id).select(orderby=~db.recepies.pub_date,limitby=limitby)
+    return dict(rows=rows,page=page,items_per_page=items_per_page)
+
+
+def vote():
+    item=db.recepies(request.vars.id)
+    if item.numb_likes==None:
+        item.numb_likes=0
+    new_votes = item.numb_likes + 1
+    item.update_record(numb_likes=new_votes)
+    redirect (URL(r=request,f='index'))
+    return str(new_votes)
+
+def feedback():
+    hello = SQLFORM(db.feedback).process()
+    return dict(hello=hello)
+
+
+def reviews():
+    if len(request.args): page=int(request.args[0])
+    else: page=0
+    items_per_page=1
+    limitby=(page*items_per_page,(page+1)*items_per_page+1)
+    rows=db(db.feedback).select(limitby=limitby)
+    return dict(rows=rows,page=page,items_per_page=items_per_page)

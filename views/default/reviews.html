@@ -1,0 +1,25 @@
+{{extend 'layout.html'}}
+<table>
+<tr width="100%" style="border:1; border-style:solid">
+        <th width="25%" style="padding-bottom: 1em; font-size:2.5em; color:#eecccc; font-family:sans-sherif; font-style:italic">Name</th>
+        <th width="25%" style="padding-bottom: 1em; font-size:2.5em; color:#eecccc; font-family:sans-sherif; font-style:italic">Recipe</th>
+        <th width="25%"  style="padding-bottom: 1em; font-size:2.5em; color:#eecccc; font-family:sans-sherif; font-style:italic">Review</th>
+        <th width="25%"  style="padding-bottom: 1em; font-size:2.5em; color:#eecccc; font-family:sans-sherif; font-style:italic">Rating</th>
+    </tr>
+{{for feedback in rows:}}
+<tr>
+        <td width="25%" style="padding: 2em; font-size:1.5em;color:#ff9999;font-family:georgia">{{=feedback.name}} </td>
+        <td width="25%" style="padding: 2em; font-size: 1.5em;color:#ff9999;font-family:georgia">{{=feedback.recipe_name}} </td>
+        <td width="25%" style="padding: 2em; font-size: 1.5em;color:#ff9999;font-family:georgia">{{=feedback.your_views}} </td>
+            <td width="25%" style="padding: 2em; font-size: 1.5em;color:#ff9999;font-family:georgia">{{=feedback.rating}} </td>
+    </tr>
+    {{pass}}
+</table>
+
+{{if page:}}
+    <a href="{{=URL(args=[page-1])}}" margin="4px">previous</a>
+{{pass}}
+
+{{if len(rows)>items_per_page:}}
+    <a href="{{=URL(args=[page+1])}}" style="margin:10px">next</a>
+{{pass}}
