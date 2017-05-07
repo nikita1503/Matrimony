@@ -63,17 +63,6 @@ def call():
     return service()
 
 @auth.requires_login()
-def create():
-    response.flash="Submit Your Nightmarish recipee."
-    form=SQLFORM(db.recepies)
-    if form.process().accepted:
-        response.flash="Thank me for letting u submit."
-        redirect(URL('default','index'))
-    elif form.errors:
-        response.flash='Dude , check ur error list'
-    return dict(form=form)
-
-@auth.requires_login()
 def upload_profile():
     response.flash="Upload your profile"
     form=SQLFORM(db.profile)
@@ -82,19 +71,6 @@ def upload_profile():
         redirect(URL('default','index'))
     elif form.errors:
         response.flash='Please check you filled all the field correctly'
-    return dict(form=form)
-
-def edit():
-    recepies=db.recepies(request.args(0)) or redirect(URL('error'))
-    form=SQLFORM(db.recepies,recepies, deletable=True)
-    if form.validate():
-        if form.deleted:
-            db(db.recepies.id==recepies.id).delete()
-            redirect(URL('default','index'))
-        else:
-            recepies.update_record(**dict(form.vars))
-            response.flash='Changes Accepted'
-            redirect(URL('default','index'))
     return dict(form=form)
 
 def edit_profile():
@@ -114,42 +90,6 @@ def edit_profile():
 def download():
     return response.download(request, db)
 
-def show():
-    recepies=db.recepies(request.args(0)) or redirect(URL('error'))
-    return dict(recepies=recepies)
-
 def show_profile():
     prf=db.profile(request.args(0)) or redirect(URL('error'))
     return dict(profile=prf)
-
-
-def mypage():
-    if len(request.args): page=int(request.args[0])
-    else: page=0
-    items_per_page=1
-    limitby=(page*items_per_page,(page+1)*items_per_page+1)
-    rows=db(db.recepies.user_id==auth.user_id).select(orderby=~db.recepies.pub_date,limitby=limitby)
-    return dict(rows=rows,page=page,items_per_page=items_per_page)
-
-
-def vote():
-    item=db.recepies(request.vars.id)
-    if item.numb_likes==None:
-        item.numb_likes=0
-    new_votes = item.numb_likes + 1
-    item.update_record(numb_likes=new_votes)
-    redirect (URL(r=request,f='index'))
-    return str(new_votes)
-
-def feedback():
-    hello = SQLFORM(db.feedback).process()
-    return dict(hello=hello)
-
-
-def reviews():
-    if len(request.args): page=int(request.args[0])
-    else: page=0
-    items_per_page=1
-    limitby=(page*items_per_page,(page+1)*items_per_page+1)
-    rows=db(db.feedback).select(limitby=limitby)
-    return dict(rows=rows,page=page,items_per_page=items_per_page)

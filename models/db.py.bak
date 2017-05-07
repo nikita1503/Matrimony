@@ -94,6 +94,50 @@ auth.settings.reset_password_requires_verification = True
 
 db.auth_user.password.requires=IS_STRONG(min=8,upper=2,special=2)
 
+#sets required fopr profile
+gender=['Male', 'Female']
+occupation_type=['Job', 'Buissness', 'Freelancer', 'Student', 'Activist', 'Other']
+education=['PhD', 'Post-Graduate', 'Graduate', 'Senior Secondary', 'Secondary', 'Uneducated']
+states=['Rajasthan']
+caste_type=['Marwari', 'Mali']
+marital_status=['Unmarried', 'Married', 'Divorced', 'Widow/Widower']
+complexsion=['Fair', 'Wheatish', 'Dark']
+
 db.define_table('profile',
-               Field('name','string',required=True)
+               Field('name','string',required=True),
+               Field('user_id', 'reference auth_user', unique=True, default=auth.user_id),
+               Field('gender', 'string', required=True, requires=IS_IN_SET(gender)),
+               Field('image7', 'upload', required=True),
+                Field('image17', 'upload'),
+                Field('image27', 'upload'),
+                Field('image37', 'upload'),
+                Field('dob7', 'datetime', required=True),
+                Field('placebirth7', 'string'),
+                Field('age7', 'integer', writable=False),
+                Field('biodata7', 'upload'),
+                Field('occupation_type7', 'string', required=True, requires=IS_IN_SET(occupation_type)),
+                Field('occupation7', 'string'),
+                Field('occupation_description7', 'text', length=400),
+                Field('income' 'integer', required=True),
+                Field('education7', 'string', required=True, requires=IS_IN_SET(education)),
+                Field('education_description7', 'text', length=400),
+                Field('complexion7', requires=IS_IN_SET(complexion)),
+                Field('height7', 'string'),
+                Field('weight7', 'integer'),
+                Field('disability', 'string'),
+                Field('state_live7', requires=IS_IN_SET(states)),
+                Field('address7', 'text', length=200),
+                Field('phone_no7',length=10),
+                Field('caste_type7', 'string', requires=IS_IN_SET(caste_type)),
+                Field('caste7', 'string'),
+                Field('gotra7', 'string'),
+                Field('manglik7', 'boolean')
+                Field('mother_name7', 'string'),
+                Field('mother_occupation7','string'),
+                Field('father_name7', 'string'),
+                Field('father_occupation7', 'string'),
+                Field('sibling_no7', 'integer'),
+                Field('marital_status7', 'string', required=True, requires=IS_IN_SET(marital_status)),
+                Field('availability7', 'boolean', required=True, default=True, writable=False, readable=False),
+                Field('pub_date7', 'datetime', default=request.now, writable=False, readable=False)
                )

@@ -93,3 +93,7 @@ def download():
 def show_profile():
     prf=db.profile(request.args(0)) or redirect(URL('error'))
     return dict(profile=prf)
+
+def my_profile():
+    prf=db.profile(user_id=auth.user_id) or redirect(URL('error'))
+    return dict(profile=prf)

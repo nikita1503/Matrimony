@@ -889,3 +889,230 @@ CREATE TABLE profile(
     name CHAR(512)
 );
 success!
+timestamp: 2017-05-07T12:55:53.390863
+ALTER TABLE profile ADD statename CHAR(512);
+timestamp: 2017-05-07T12:55:53.492861
+ALTER TABLE profile ADD mother_occupation CHAR(512);
+timestamp: 2017-05-07T12:55:53.581466
+ALTER TABLE profile ADD image CHAR(512);
+timestamp: 2017-05-07T12:55:53.663302
+ALTER TABLE profile ADD address TEXT;
+timestamp: 2017-05-07T12:55:53.762925
+ALTER TABLE profile ADD father_occupation CHAR(512);
+timestamp: 2017-05-07T12:55:53.851456
+ALTER TABLE profile ADD father_name CHAR(512);
+timestamp: 2017-05-07T12:55:53.940081
+ALTER TABLE profile ADD education CHAR(512);
+timestamp: 2017-05-07T12:55:54.028809
+ALTER TABLE profile ADD availability CHAR(1);
+timestamp: 2017-05-07T12:55:54.139353
+ALTER TABLE profile ADD mother_name CHAR(512);
+timestamp: 2017-05-07T12:55:54.228080
+ALTER TABLE profile ADD occupation CHAR(512);
+timestamp: 2017-05-07T12:55:54.316642
+ALTER TABLE profile ADD user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE   UNIQUE;
+timestamp: 2017-05-07T12:56:24.619391
+ALTER TABLE profile ADD statename CHAR(512);
+timestamp: 2017-05-07T12:56:25.929829
+ALTER TABLE profile ADD statename CHAR(512);
+timestamp: 2017-05-07T12:56:31.926783
+ALTER TABLE profile ADD statename CHAR(512);
+timestamp: 2017-05-07T12:57:17.884183
+ALTER TABLE profile ADD mother_occupation CHAR(512);
+timestamp: 2017-05-07T12:57:25.940558
+ALTER TABLE profile ADD mother_occupation CHAR(512);
+timestamp: 2017-05-07T12:58:06.903441
+ALTER TABLE profile ADD mother_occupation CHAR(512);
+timestamp: 2017-05-07T12:58:25.949645
+ALTER TABLE profile ADD mother_occupation CHAR(512);
+timestamp: 2017-05-07T13:00:23.660828
+ALTER TABLE profile ADD mother_occupation CHAR(512);
+timestamp: 2017-05-07T13:00:25.932041
+ALTER TABLE profile ADD mother_occupation CHAR(512);
+timestamp: 2017-05-07T13:01:25.913422
+ALTER TABLE profile ADD mother_occupation CHAR(512);
+timestamp: 2017-05-07T13:01:49.345248
+ALTER TABLE profile ADD image CHAR(512);
+timestamp: 2017-05-07T13:02:25.905941
+ALTER TABLE profile ADD image CHAR(512);
+timestamp: 2017-05-07T13:03:14.538847
+ALTER TABLE profile ADD image CHAR(512);
+timestamp: 2017-05-07T13:03:25.893280
+ALTER TABLE profile ADD image CHAR(512);
+timestamp: 2017-05-07T13:03:53.476804
+ALTER TABLE profile ADD mother_occupation CHAR(512);
+timestamp: 2017-05-07T13:04:12.786185
+ALTER TABLE profile ADD image CHAR(512);
+timestamp: 2017-05-07T13:04:25.880490
+ALTER TABLE profile ADD image CHAR(512);
+timestamp: 2017-05-07T13:04:34.673051
+ALTER TABLE profile ADD occupation_type CHAR(512);
+timestamp: 2017-05-07T13:04:34.766602
+ALTER TABLE profile ADD father_occupation CHAR(512);
+timestamp: 2017-05-07T13:04:52.742403
+ALTER TABLE profile ADD occupation_type CHAR(512);
+timestamp: 2017-05-07T13:05:17.793281
+ALTER TABLE profile ADD father_name CHAR(512);
+timestamp: 2017-05-07T13:05:25.887316
+ALTER TABLE profile ADD father_name CHAR(512);
+timestamp: 2017-05-07T13:06:25.888575
+ALTER TABLE profile ADD father_name CHAR(512);
+timestamp: 2017-05-07T13:06:42.813013
+ALTER TABLE profile ADD image333 CHAR(512);
+timestamp: 2017-05-07T13:06:42.912430
+ALTER TABLE profile ADD placebirth CHAR(512);
+timestamp: 2017-05-07T13:06:43.001058
+ALTER TABLE profile ADD sibling_no33 INTEGER;
+timestamp: 2017-05-07T13:06:43.082893
+ALTER TABLE profile ADD image133 CHAR(512);
+timestamp: 2017-05-07T13:06:43.171404
+ALTER TABLE profile ADD father_name33 CHAR(512);
+timestamp: 2017-05-07T13:06:43.259956
+ALTER TABLE profile ADD education_description33 TEXT;
+timestamp: 2017-05-07T13:06:43.348587
+ALTER TABLE profile ADD pub_date33 TIMESTAMP;
+timestamp: 2017-05-07T13:06:43.437063
+ALTER TABLE profile ADD age33 INTEGER;
+timestamp: 2017-05-07T13:06:43.525945
+ALTER TABLE profile ADD occupationtype33 CHAR(512);
+timestamp: 2017-05-07T13:06:43.614258
+ALTER TABLE profile ADD dob33 TIMESTAMP;
+timestamp: 2017-05-07T13:06:43.713947
+ALTER TABLE profile ADD user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE  ;
+timestamp: 2017-05-07T13:06:43.802615
+ALTER TABLE profile ADD biodata33 CHAR(512);
+timestamp: 2017-05-07T13:06:43.891023
+ALTER TABLE profile ADD address33 TEXT;
+timestamp: 2017-05-07T13:06:43.979579
+ALTER TABLE profile ADD marital_status33 CHAR(512);
+timestamp: 2017-05-07T13:06:44.068146
+ALTER TABLE profile ADD state_live33 CHAR(512);
+timestamp: 2017-05-07T13:06:44.156661
+ALTER TABLE profile ADD caste_type33 CHAR(512);
+timestamp: 2017-05-07T13:06:44.234218
+ALTER TABLE profile ADD motheroccupation33 CHAR(512);
+timestamp: 2017-05-07T13:06:44.311635
+ALTER TABLE profile ADD mother_name33 CHAR(512);
+timestamp: 2017-05-07T13:06:44.389161
+ALTER TABLE profile ADD occupation33 CHAR(512);
+timestamp: 2017-05-07T13:06:44.466616
+ALTER TABLE profile ADD caste33 CHAR(512);
+timestamp: 2017-05-07T13:06:44.544485
+ALTER TABLE profile ADD gender CHAR(512);
+timestamp: 2017-05-07T13:06:44.621634
+ALTER TABLE profile ADD phone_no33 CHAR(10);
+timestamp: 2017-05-07T13:06:44.699288
+ALTER TABLE profile ADD fatheroccupation33 CHAR(512);
+timestamp: 2017-05-07T13:06:44.776571
+ALTER TABLE profile ADD image233 CHAR(512);
+timestamp: 2017-05-07T13:06:44.854050
+ALTER TABLE profile ADD occupationdescription33 TEXT;
+timestamp: 2017-05-07T13:06:44.931635
+ALTER TABLE profile ADD image234 CHAR(512);
+timestamp: 2017-05-07T13:06:45.074322
+ALTER TABLE profile ADD education33 CHAR(512);
+timestamp: 2017-05-07T13:06:45.174407
+ALTER TABLE profile ADD availability33 CHAR(1);
+success!
+success!
+success!
+success!
+success!
+success!
+timestamp: 2017-05-07T13:09:08.082227
+ALTER TABLE profile ADD mother_occupation CHAR(512);
+timestamp: 2017-05-07T13:09:25.884363
+ALTER TABLE profile ADD mother_occupation CHAR(512);
+timestamp: 2017-05-07T13:10:25.892199
+ALTER TABLE profile ADD mother_occupation CHAR(512);
+timestamp: 2017-05-07T13:10:34.328993
+ALTER TABLE profile ADD mother_occupation CHAR(512);
+timestamp: 2017-05-07T13:11:25.882353
+ALTER TABLE profile ADD mother_occupation CHAR(512);
+timestamp: 2017-05-07T13:11:38.355407
+ALTER TABLE profile ADD occupation_description33 TEXT;
+timestamp: 2017-05-07T13:11:38.457414
+ALTER TABLE profile ADD mother_occupation33 CHAR(512);
+timestamp: 2017-05-07T13:11:38.527818
+ALTER TABLE profile ADD image CHAR(512);
+timestamp: 2017-05-07T13:12:08.816219
+ALTER TABLE profile ADD mother_occupation33 CHAR(512);
+timestamp: 2017-05-07T13:12:10.215645
+ALTER TABLE profile ADD mother_occupation33 CHAR(512);
+timestamp: 2017-05-07T13:12:25.889896
+ALTER TABLE profile ADD mother_occupation33 CHAR(512);
+timestamp: 2017-05-07T13:13:25.890655
+ALTER TABLE profile ADD mother_occupation33 CHAR(512);
+timestamp: 2017-05-07T13:14:25.902871
+ALTER TABLE profile ADD state_live7 CHAR(512);
+timestamp: 2017-05-07T13:14:26.021719
+ALTER TABLE profile ADD education7 CHAR(512);
+timestamp: 2017-05-07T13:14:26.099211
+ALTER TABLE profile ADD education_description7 TEXT;
+timestamp: 2017-05-07T13:14:26.177296
+ALTER TABLE profile ADD image17 CHAR(512);
+timestamp: 2017-05-07T13:14:26.254254
+ALTER TABLE profile ADD image37 CHAR(512);
+timestamp: 2017-05-07T13:14:26.338419
+ALTER TABLE profile ADD mother_occupation7 CHAR(512);
+timestamp: 2017-05-07T13:14:26.420268
+ALTER TABLE profile ADD occupation_type7 CHAR(512);
+timestamp: 2017-05-07T13:14:26.508824
+ALTER TABLE profile ADD dob7 TIMESTAMP;
+timestamp: 2017-05-07T13:14:26.597631
+ALTER TABLE profile ADD caste7 CHAR(512);
+timestamp: 2017-05-07T13:14:26.674926
+ALTER TABLE profile ADD pub_date7 TIMESTAMP;
+timestamp: 2017-05-07T13:14:26.763790
+ALTER TABLE profile ADD occupation7 CHAR(512);
+timestamp: 2017-05-07T13:14:26.852057
+ALTER TABLE profile ADD mother_name7 CHAR(512);
+timestamp: 2017-05-07T13:14:26.940600
+ALTER TABLE profile ADD age7 INTEGER;
+timestamp: 2017-05-07T13:14:27.029147
+ALTER TABLE profile ADD availability7 CHAR(1);
+timestamp: 2017-05-07T13:14:27.117776
+ALTER TABLE profile ADD address7 TEXT;
+timestamp: 2017-05-07T13:14:27.206336
+ALTER TABLE profile ADD phone_no7 CHAR(10);
+timestamp: 2017-05-07T13:14:27.283822
+ALTER TABLE profile ADD marital_status7 CHAR(512);
+timestamp: 2017-05-07T13:14:27.361807
+ALTER TABLE profile ADD image7 CHAR(512);
+timestamp: 2017-05-07T13:14:27.438745
+ALTER TABLE profile ADD placebirth7 CHAR(512);
+timestamp: 2017-05-07T13:14:27.517838
+ALTER TABLE profile ADD occupation_description7 TEXT;
+timestamp: 2017-05-07T13:14:27.593731
+ALTER TABLE profile ADD image27 CHAR(512);
+timestamp: 2017-05-07T13:14:27.693372
+ALTER TABLE profile ADD sibling_no7 INTEGER;
+timestamp: 2017-05-07T13:14:27.770923
+ALTER TABLE profile ADD father_occupation7 CHAR(512);
+timestamp: 2017-05-07T13:14:27.848404
+ALTER TABLE profile ADD father_name7 CHAR(512);
+timestamp: 2017-05-07T13:14:27.948010
+ALTER TABLE profile ADD caste_type7 CHAR(512);
+timestamp: 2017-05-07T13:14:28.025504
+ALTER TABLE profile ADD biodata7 CHAR(512);
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
