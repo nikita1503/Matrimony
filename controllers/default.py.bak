@@ -118,6 +118,10 @@ def show():
     recepies=db.recepies(request.args(0)) or redirect(URL('error'))
     return dict(recepies=recepies)
 
+def show_profile():
+    prf=db.profile(request.args(0)) or redirect(URL('error'))
+    return dict(profile=prf)
+
 
 def mypage():
     if len(request.args): page=int(request.args[0])

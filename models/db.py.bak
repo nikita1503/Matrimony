@@ -94,23 +94,6 @@ auth.settings.reset_password_requires_verification = True
 
 db.auth_user.password.requires=IS_STRONG(min=8,upper=2,special=2)
 
-db.define_table('recepies',
-                Field('title', length=200, required=True, requires=IS_NOT_EMPTY()),
-                Field('user_id','reference auth_user',default=auth.user_id,writable=False,readable=False),
-                Field('image', 'upload'),
-                Field('image1', 'upload'),
-                Field('image2', 'upload'),
-                Field('image3', 'upload'),
-                Field('description','text', length=400),
-                Field('recepie','text', length=4000),
-                Field('author', default=session.auth.user.id if session.auth else None, writable=False,required=True,requires=IS_NOT_EMPTY()),
-                Field('pub_date', 'datetime', default=request.now, writable=False),
-                Field('numb_likes','integer',default=0,writable=False)
-                )
-
-db.define_table('feedback',
-    Field('name',unique=True,default=session.auth.user.first_name if session.auth else None,writable=False),
-    Field('recipe_name','string'),
-    Field('your_views','text'),
-    Field('rating','integer',default=0))
-db.feedback.rating.requires=IS_IN_SET(['1','2','3','4','5','6','7','8','9','10'])
+db.define_table('profile',
+               Field('name','string',required=True)
+               )
