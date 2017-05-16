@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # this file is released under public domain and you can use without limitations
-
+from datetime import date
+from datetime import datetime
 #########################################################################
 ## This is a sample controller
 ## - index is the default action of any application
@@ -97,3 +98,11 @@ def show_profile():
 def my_profile():
     prf=db.profile(user_id=auth.user_id) or redirect(URL('error'))
     return dict(profile=prf)
+
+def calculate_age():
+    dob=request.vars.dob7
+    dob=datetime.strptime(dob, "%Y-%m-%d %H:%M:%S")
+    today=date.today()
+    age=today.year-dob.year
+    #alert("hello")
+    return age

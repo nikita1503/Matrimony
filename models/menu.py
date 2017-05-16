@@ -40,10 +40,8 @@ def _():
     ctr = request.controller
     # useful links to internal and external resources
     response.menu += [
-        (T('Upload Recipe'), False, URL('default', 'create')),
-        (T('My Recipes'), False, URL('default', 'mypage')),
-        (T('Feedback'), False, URL('default', 'feedback')),
-         (T('Reviews'), False, URL('default', 'reviews')),
+        (T('Make Profile'), False, URL('default', 'upload_profile')),
+        (T('My Profile'), False, URL('default', 'my_profile')),
     ]
 if DEVELOPMENT_MENU: _()
 

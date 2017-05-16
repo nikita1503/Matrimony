@@ -1,8 +1,40 @@
 {{extend 'layout.html'}}
-<table>
-{{for prf in rows:}}
-<tr>
-    <td>{{=prf.name}}</td>
-</tr>
-{{pass}}
+{{block header}}
+    <header class="container-fluid background">
+      <div class="jumbotron text-center">
+        {{if response.title:}}
+        <h1 style="margin-bottom:10px">Explore!
+          <small>{{=response.subtitle or ''}}</small></h1>
+        {{pass}}
+      </div>
+    </header>
+{{end}}
+<form>
+    <input type="hidden" id="id" name="id" value=""/></form>
+<style>
+    table th
+    {
+        color:#ffeeee;
+    }
+</style>
+<table width="100%" style="border-collapse: collapse; border:1; border-style:solid">
+    <tr widht="100%">
+        {{for prf in rows:}}
+        <td width="75%">
+            <div style="padding-bottom: 2em; font-size:3em">{{=A(prf.name,_href=URL("show_profile",args=prf.id))}}</div>
+            <div>
+            <div style="padding-bottom: 2em;padding-left:2em; font-size: 1.5em">{{=prf.occupation7}} </div>
+            <div style="padding-bottom: 2em;padding-left:2em; font-size: 1.5em">{{=prf.education7}} </div>
+        </td>
+        <td style="padding-bottom: 2em;padding-bottom: 1em; padding-right: 2em"> <img width="300px" height="200px" src="{{=URL('download', args=prf.image7)}}"></td>
+    </tr>
+    {{pass}}
 </table>
+
+{{if page:}}
+    <a href="{{=URL(args=[page-1])}}" margin="4px">previous</a>
+{{pass}}
+
+{{if len(rows)>items_per_page:}}
+    <a href="{{=URL(args=[page+1])}}" style="margin:10px">next</a>
+{{pass}}

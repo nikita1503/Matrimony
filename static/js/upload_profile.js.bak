@@ -1,0 +1,5 @@
+jQuery("#profile_dob7").focus(function(){
+    alert("hello");
+    born=jQuery("profile_dob7").val();
+    jQuery("#profile_age7").val("4");
+      });
